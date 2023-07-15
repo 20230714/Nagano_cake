@@ -18,13 +18,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :orders
     resources :order_details
    end
- 
+
    scope module: :public do
     root to: "homes#top"
     resources :items
     resources :customers
     resources :cart_items
     resources :orders
-    resources :adresses
+    resources :addresses
    end
 end
