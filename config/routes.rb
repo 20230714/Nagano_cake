@@ -12,6 +12,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
    namespace :admin do
     root to: "homes#top"
+    get "about", to: "homes#about"
     resources :items
     resources :genres
     resources :customers
