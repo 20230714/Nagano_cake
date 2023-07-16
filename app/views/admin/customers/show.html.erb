@@ -1,0 +1,52 @@
+<div class="container">
+  <h2 class="my-5"><!--%= full_name(@customer) %-->さんの会員詳細</h2>
+  <div class="row">
+    <div>
+      <table class="table">
+        <tr>
+          <th class="text-center">会員ID</th>
+          <td><!--%= @customer.id %--></td>
+        </tr>
+        <tr>
+          <th class="text-center">氏名</th>
+          <td><!--%= @customer.full_name %--></td>         
+        </tr>
+        <tr>
+          <th class="text-center">フリガナ</th>
+          <td><!--%= kana_full_name(@customer) %--></td>         
+        </tr>
+        <tr>
+          <th class="text-center">郵便番号</th>
+          <td><!--%= @customer.postcode %--></td>         
+        </tr>
+        <tr>
+          <th class="text-center">住所</th>
+          <td><!--%= @customer.address %--></td>         
+        </tr>
+          <th class="text-center">電話番号</th>
+          <td><!--%= @customer.phone_number %--></td>         
+        </tr>
+        </tr>
+          <th class="text-center">メールアドレス</th>
+          <td><!--%= @customer.email %--></td>         
+        </tr>
+          <th class="text-center">会員ステータス</th>
+          <!--% if @customer.is_deleted == true %>
+            <td>退会済み</td>
+          <!% else %>
+            <td>有効</td>
+          <!% end %>
+          会員機能が実装されたら反映（しばじゅん）-->
+        </tr>
+        <tr>
+          <th></th>
+          <td class="d-flex">
+            <p><%= link_to "編集する",edit_admin_customer_path, class:"btn btn-success" %></p>
+            <p class="offset-3"><%= link_to "注文履歴一覧を見る",admin_orders_path, class:"btn btn-primary" %></p>
+            <!--オーダー機能が実装されたら、admin_orders_pathでちゃんと飛ぶか確認。（しばじゅん）--
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
