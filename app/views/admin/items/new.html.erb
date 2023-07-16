@@ -1,0 +1,40 @@
+<div class="container">
+  <h3 class="text-center mb-4 mt-5", style="margin-left:100px; width:230px; background-color:#d3d3d3;">商品新規登録</h3>
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <%= form_with model: @items do |f| %>
+        <div class="form-group">
+          <%= f.label :商品画像, style: "margin-right:60px;" %>
+          <%= f.file_field :image, accept: "image/*" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :商品名, style: "margin-right:75px;" %>
+          <%= f.text_field :name, placeholder: "商品名" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :商品説明, style: "margin-right:60px;" %>
+          <%= f.text_area :description, placeholder: "ここに説明文を記述します"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :ジャンル, style: "margin-right:60px;" %>
+          <%= f.select :status, {prompt: '選択してください'}, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :税抜価格, style: "margin-right:60px;" %>
+          <%= f.text_field :price, placeholder: "1000" %>円
+        </div>
+        <div class="form-group d-flex">
+          <%= f.label :販売ステータス %>
+        <div class="ml-3">
+          <%= f.radio_button :is_sold_out, true %>
+          <%= f.label :販売中 %>
+        </div>
+        <div class="ml-3">
+          <%= f.radio_button :is_sold_out, false %>
+          <%= f.label :販売停止中 %>
+        </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
