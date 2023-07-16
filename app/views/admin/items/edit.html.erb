@@ -15,7 +15,10 @@
           <%= f.label :商品説明, style: "margin-right:60px;", class: 'align-top' %>
           <%= f.text_area :description, placeholder: "ここに説明文を記述します", size: "30x5" %>
         </div>
-        
+        <div class="form-group">
+          <%= f.label :ジャンル, style: "margin-right:60px;" %>
+          <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "選択してください" %>
+        </div>
         <div class="form-group">
           <%= f.label :税抜価格, style: "margin-right:60px;" %>
           <%= f.number_field :price, placeholder: "1000" %>円
