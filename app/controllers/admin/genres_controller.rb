@@ -10,10 +10,10 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
 		if @genre.save
 		   @genres = Genre.all
-		   redirect_to admin_genres_path
+		   render :index
 		else
 		  @genres = Genre.all
-		  render :index
+		   redirect_back(fallback_location: root_path)
 		end
 
   end
@@ -28,7 +28,7 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to admin_genres_path
     else
-      render :edit
+      redirect_back(fallback_location: root_path)
     end
   end
 
