@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h3 class="text-center mt-5", style="margin-left:50px; width:200px; background-color:#d3d3d3;">商品一覧</h3>
+      <%= link_to "+", new_admin_item_path, class: "text-decoration-none text-secondary d-flex justify-content-end", style: "font-size:40px;" %>
+      <table class="table mx-auto">
+        <thead class="table-secondary">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, admin_item_path(item) %></td>
+              <td><%= item.price%></td>
+              <td></td>
+              <td><%= item.is_sold_out %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
