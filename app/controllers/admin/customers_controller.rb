@@ -6,6 +6,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def show
+    #publicで作成したら＃外す。（しばじゅん）
     #@customer = Customer.find(params[:id])
   end
   
