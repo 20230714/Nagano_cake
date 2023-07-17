@@ -13,7 +13,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    namespace :admin do
     root to: "homes#top"
     get "about", to: "homes#about"
-    resources :items
+    resources :items, except: [:destroy]
     resources :genres
     resources :customers
     resources :orders
@@ -23,7 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    scope module: :public do
     root to: "homes#top"
     get "about", to: "homes#about"
-    resources :items
+    resources :items, only: [:index, :show]
     resources :customers
     resources :cart_items
 
