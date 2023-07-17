@@ -1,42 +1,41 @@
 <div class="container">
-  <h2 class="my-5", style="background-color:#d3d3d3;"><!--%= full_name(@customer) %-->さんの会員詳細</h2>
+  <h2 class="my-5", style="background-color:#d3d3d3;"><%= @customer.full_name %>さんの会員詳細</h2>
   <div class="row">
     <div class="col-12">
       <table class="table">
         <tr>
           <th class="text-left">会員ID</th>
-          <td><!--%= @customer.id %--></td>
+          <td><%= @customer.id %></td>
         </tr>
         <tr>
           <th class="text-left">氏名</th>
-          <td><!--%= @customer.full_name %--></td>
+          <td><%= @customer.full_name %></td>
         </tr>
         <tr>
           <th class="text-left">フリガナ</th>
-          <td><!--%= kana_full_name(@customer) %--></td>
+          <td><%= @customer.kana_full_name %></td>
         </tr>
         <tr>
           <th class="text-left">郵便番号</th>
-          <td><!--%= @customer.postcode %--></td>
+          <td><%= @customer.postcode %></td>
         </tr>
         <tr>
           <th class="text-left">住所</th>
-          <td><!--%= @customer.address %--></td>
+          <td><%= @customer.address %></td>
         </tr>
           <th class="text-left">電話番号</th>
-          <td><!--%= @customer.phone_number %--></td>
+          <td><%= @customer.phone_number %></td>
         </tr>
         </tr>
           <th class="text-left">メールアドレス</th>
-          <td><!--%= @customer.email %--></td>
+          <td><%= @customer.email %></td>
         </tr>
           <th class="text-left">会員ステータス</th>
-          <!--% if @customer.is_deleted == true %>
+          <% if @customer.is_deleted == true %>
             <td>退会済み</td>
-          <!% else %>
+          <% else %>
             <td>有効</td>
-          <!% end %>
-          会員機能が実装されたら反映（しばじゅん）-->
+          <% end %>
         </tr>
         <tr>
           <th></th>

@@ -1,29 +1,21 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    #publicで作成したら＃外す。（しばじゅん）
-    #@customers = Cutomer.all
+    @customers = Customer.all
   end
 
   def show
-    #publicで作成したら＃外す。（しばじゅん）
-    #@customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def edit
-    #publicで作成したら＃外す。（しばじゅん）
-    #@customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 
   def update
-    #publicで作成したら＃外す。（しばじゅん）
-    #@customer = Customer.find(params[:id])
-    #if @customer.update(customer_params)
-       #flash[:notice] = "会員情報を更新しました。"
-       #redirect_to request.referer
-    #else
-      #render "edit"
-    #end
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+    redirect_to admin_customer_path
   end
 
   private
