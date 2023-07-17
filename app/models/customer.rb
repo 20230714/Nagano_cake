@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :orders, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
 
     # 会員フルネーム(しばじゅん）
   def full_name
@@ -12,5 +13,5 @@ class Customer < ApplicationRecord
   end
     def kana_full_name
     self.kana_last_name + " " + self.kana_first_name
-  end
+    end
 end

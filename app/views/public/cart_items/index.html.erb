@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center mb-5 mt-5 w-25", style="background-color:#d3d3d3;">ショッピングカート</h3>
+
+      <table class='table'>
+        <thead style="background-color:#d3d3d3;">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tbody>
+      </table>
+
+        <%= link_to "買い物を続ける", items_path(@item), class: "btn btn-lg btn-primary" %>
+
+          <table class="table table-bordered w-25 h-25 float-right">
+            <thead class="thead-light">
+            <tr><th class="align-middle border-dark">合計金額</th><td class="align-middle border-dark">12345</td></tr>
+          </table>
+
+        <div class="row justify-content-center mt-5">
+          <%= link_to "注文情報入力に進む", new_order_path(@order), class: "btn btn-lg btn-success" %>
+        </div>
+    </div>
+  </div>
+</div>
