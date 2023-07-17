@@ -26,7 +26,12 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items
     resources :customers
     resources :cart_items
-    resources :orders
+    resources :orders do
+        collection do
+          post 'confirm'
+          get 'complete'
+        end
+      end
     resources :addresses
    end
 end
