@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2 ml-4">
+      <%= render 'genre_search', genres: @genres %>
+    </div>
+    <div class="col-3 offset-md-1">
+      <div class="mt-5"><%= image_tag @item.image, size: "300x250" %></div>
+    </div>
+    <div class="col-3 offset-md-1">
+      <table class="table table-borderless mt-5">
+        <tr>
+          <th><h3><%= @item.name %></h3></th>
+        </tr>
+        <tr>
+          <td><%= @item.description %></td>
+        </tr>
+        <tr>
+          <td class="d-flex"><h4 class="mr-1">¥<%= @item.add_tax_price %></h4>(税込)</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
