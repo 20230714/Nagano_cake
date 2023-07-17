@@ -16,15 +16,7 @@ class Customer < ApplicationRecord
 
   end
   
-  #customer情報編集のバリデーション（しばじゅん）
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :kana_last_name, presence: true
-  validates :kana_first_name, presence: true
-  validates :postal_code, presence: true
-  validates :address, presence: true
-  validates :phone_number, presence: true
-  validates :email, presence: true, uniqueness: true
+
   
 
 
