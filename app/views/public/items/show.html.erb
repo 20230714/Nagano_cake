@@ -4,18 +4,25 @@
       <%= render 'genre_search', genres: @genres %>
     </div>
     <div class="col-3 offset-md-1">
-      <div class="mt-5"><%= image_tag @item.image, size: "300x250" %></div>
+      <div class="mt-5"><%= image_tag @item.image, size: "300x200" %></div>
     </div>
     <div class="col-3 offset-md-1">
       <table class="table table-borderless mt-5">
         <tr>
-          <th><h3><%= @item.name %></h3></th>
+          <th colspan="2"><h3><%= @item.name %></h3></th>
         </tr>
         <tr>
-          <td><%= @item.description %></td>
+          <td colspan="2"><%= @item.description %></td>
         </tr>
         <tr>
-          <td class="d-flex"><h4 class="mr-1">¥<%= @item.add_tax_price %></h4>(税込)</td>
+          <td colspan="2"><h4 class="mr-1 d-inline-block">¥<%= @item.add_tax_price %></h4><p class="d-inline-block">(税込)</p></td>
+        </tr>
+        <tr>
+          <%= form_with model: @cart_item do |f| %>
+          <td><%= f.select :quantity, *[1..20], include_blank: "個数選択"%></td>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
+          <% end %>
         </tr>
       </table>
     </div>
