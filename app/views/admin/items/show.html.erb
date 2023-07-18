@@ -20,11 +20,15 @@
         </tr>
         <tr>
           <th>税込価格(税抜価格)</th>
-          <td><%= @item.add_tax_price %>(<%= @item.price %>)</td>
+          <td><%= @item.add_tax_price.to_s(:delimited, delimiter: ',') %>(<%= @item.price.to_s(:delimited, delimiter: ',') %>)円</td>
         </tr>
         <tr>
           <th>販売ステータス</th>
-          <td><%= @item.is_sold_out %></td>
+          <% if @item.is_sold_out %>
+            <td class="text-danger">販売停止中</td>
+          <% else %>
+            <td class="text-success">販売中</td>
+          <% end %>
         </tr>
       </table>
       <%= link_to "編集する", edit_admin_item_path, class: "btn btn-success rounded text-white" %>

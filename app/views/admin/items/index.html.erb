@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-10 mx-auto">
       <h3 class="text-center mt-5", style="margin-left:50px; width:200px; background-color:#d3d3d3;">商品一覧</h3>
-      <%= link_to "+", new_admin_item_path, class: "text-decoration-none text-secondary d-flex justify-content-end", style: "font-size:40px;" %>
+      <%= link_to new_admin_item_path, class: "d-flex justify-content-end text-decoration-none mb-2" do %>
+      <i class="fas fa-plus-circle fa-2x"></i>
+      <% end %>
       <table class="table mx-auto">
         <thead class="table-secondary">
           <tr>
@@ -18,7 +20,7 @@
             <tr>
               <td><%= item.id %></td>
               <td><%= link_to item.name, admin_item_path(item) %></td>
-              <td><%= item.price %></td>
+              <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
               <td><%= item.genre.name %></td>
               <% if item.is_sold_out %>
                 <td class="text-danger">販売停止中</td>
