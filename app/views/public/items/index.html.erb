@@ -4,7 +4,12 @@
       <%= render 'public/homes/genre_search', genres: @genres %>
     </div>
     <div class="col-9">
+      <% if params[:genre_id] %>
+      <h3 class="ml-3 mt-5  d-inline-block"><%= @genre.name %></h3><h5 class="d-inline-block">(全<%= @items.count %>件)</h5>
+      <% else %>
       <h3 class="ml-3 mt-5  d-inline-block">商品一覧</h3><h5 class="d-inline-block">(全<%= @items.count %>件)</h5>
+      <% end %>
+      
       <div class="container">
         <div class="row">
           <% @items.each do |item| %>
