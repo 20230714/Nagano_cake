@@ -18,6 +18,7 @@ class Admin::CustomersController < ApplicationController
     redirect_to admin_customer_path
   end
 
+  
   private
 
    def customer_params
