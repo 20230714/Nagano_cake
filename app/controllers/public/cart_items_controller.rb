@@ -30,7 +30,6 @@ class Public::CartItemsController < ApplicationController
     @old_cart_item = CartItem.find_by(item: @cart_item.item)
     if @old_cart_item.present? and @cart_item.valid?
       @cart_item.quantity += @old_cart_item.quantity
-      @old_cart_item.destroy
     end
 
       if @cart_item.save
