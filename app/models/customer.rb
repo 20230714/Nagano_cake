@@ -14,14 +14,13 @@ class Customer < ApplicationRecord
   def kana_full_name
     self.kana_last_name + self.kana_first_name
   end
-  
+
   def active_for_authentication?
     super && (is_deleted == false)
   end
 
-  
+
 
 
 end
 
- 
