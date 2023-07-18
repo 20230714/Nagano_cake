@@ -3,12 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // topページのcss
-.top {
-  width: 100%;
-  height: 100%;
-  background-color: #fffaf0;
-}
-
 .top-image {
   width: 100%;
   height: 300px;
@@ -23,6 +17,12 @@
 
 
 // aboutページのcss
+.about {
+   width: 100%;
+  height: 100%;
+  background-color: #fffaf0;
+}
+
 .about-image {
   height: 450px;
   background-image: url(1199ac4f5eaf3d70470fbbd16331ae71.jpg);
