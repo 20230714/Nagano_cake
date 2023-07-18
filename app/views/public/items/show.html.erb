@@ -16,7 +16,7 @@
           <td colspan="2"><%= @item.description %></td>
         </tr>
         <tr>
-          <td colspan="2"><h4 class="mr-1 d-inline-block">¥<%= @item.add_tax_price.to_s(:delimited, delimiter: ',') %></h4><p class="d-inline-block">(税込)</p></td>
+          <td colspan="2"><h4 class="mr-1 d-inline-block">¥<%= @item.add_tax_price.to_s(:delimited) %></h4><p class="d-inline-block">(税込)</p></td>
         </tr>
         <tr>
           <td><%= f.select :quantity, *[1..20], include_blank: "個数選択"%></td>
