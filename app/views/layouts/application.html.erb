@@ -19,18 +19,24 @@
           <ul class="navbar-nav">
             <% if customer_signed_in? %>
               <li>
-                <%= link_to "マイページ", customer_path(current_customer), class: "border rounded p-2 mr-3 text-dark" %>
-              </li>
-              <li>
-                <%= link_to "商品一覧", items_path, class: "border rounded p-2 mr-3 text-dark" %>
-              </li>
-              <li>
-                <%= link_to cart_items_path, class: "border rounded p-2 mr-3 text-dark" do %>
-                <i class="fas fa-shopping-cart"></i>
+                <%= link_to customer_path(current_customer), class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-user"></i> my page
                 <% end %>
               </li>
               <li>
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "border rounded p-2 text-dark" %>
+                <%= link_to items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-birthday-cake"></i> items
+                <% end %>
+              </li>
+              <li>
+                <%= link_to cart_items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-shopping-cart"></i> cart
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_customer_session_path, method: :delete, class: "border rounded p-2 text-dark" do %>
+                <i class="fas fa-sign-out-alt"></i> Log out
+                <% end %>
               </li>
             <% elsif admin_signed_in? %>
               <li>
@@ -50,20 +56,31 @@
               </li>
             <% else %>
               <li>
-                <%= link_to "About", about_path, class: "border rounded p-2 mr-3 text-dark" %>
+                <%= link_to about_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-store"></i> About
+                <% end %>
               </li>
               <li>
-                <%= link_to "商品一覧", items_path, class: "border rounded p-2 mr-3 text-dark" %>
+                <%= link_to items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-birthday-cake"></i> items
+                <% end %>
               </li>
               <li>
-                <%= link_to "新規登録", new_customer_registration_path, class: "border rounded p-2 mr-3 text-dark" %>
+                <%= link_to new_customer_registration_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-user-plus"></i> sign up
+                <% end %>
               </li>
               <li>
-                <%= link_to "ログイン", new_customer_session_path, class: "border rounded p-2 mr-3 text-dark" %>
+                <%= link_to new_customer_session_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-sign-in-alt"></i> Log in
+                <% end %>
               </li>
             <% end %>
           </ul>
         </div>
+        <% if customer_signed_in? %>
+         <p class="d-flex justify-content-end customer_name rounded p-2 text-white"><%= current_customer.full_name %>様</p>
+        <% end %>
       </nav>
     </header>
     <main style="height: 800px"><%= yield %></main>
