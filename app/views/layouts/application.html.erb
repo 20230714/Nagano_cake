@@ -6,6 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/f9e80abfb4.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -24,7 +25,9 @@
                 <%= link_to "商品一覧", items_path, class: "border rounded p-2 mr-3 text-dark" %>
               </li>
               <li>
-                <%= link_to "カート", cart_items_path, class: "border rounded p-2 mr-3 text-dark" %>
+                <%= link_to cart_items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-shopping-cart"></i>
+                <% end %>
               </li>
               <li>
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "border rounded p-2 text-dark" %>
