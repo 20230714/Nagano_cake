@@ -13,7 +13,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    namespace :admin do
     root to: "homes#top"
     get "about", to: "homes#about"
-    resources :items
+    resources :items, except: [:destroy]
     resources :genres
     resources :customers
     resources :orders
@@ -23,22 +23,26 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    scope module: :public do
     root to: "homes#top"
     get "about", to: "homes#about"
-    resources :items
-    resources :customers
-    
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:edit,:update,:show] do
+      collection do
+        # 退会確認画面
+        get  '/customers/check' => 'customers#check'
+        # 論理削除用のルーティング
+        patch  '/customers/withdraw' => 'customers#withdraw'
+      end
+    end
     resources :cart_items,only: [:index,:update,:create,:destroy] do
-        collection do
-          delete '/all_destroy' => 'cart_items#all_destroy'
-        end
+      collection do
+        delete '/all_destroy' => 'cart_items#all_destroy'
       end
-
+    end
     resources :orders, only: [:new, :create, :index, :show]do
-        collection do
-          post "confirm"
-          get "complete"
-        end
+      collection do
+        post "confirm"
+        get "complete"
       end
-
+    end
     resources :addresses
+    end
    end
-end

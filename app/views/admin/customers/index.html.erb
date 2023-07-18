@@ -10,10 +10,29 @@
           <th>ステータス</th>
         </tr>
       </thead>
-    </table>
       <tbody>
-        <!--% @customers.each do |customer| %>
-      #publicで作成したら＃外す。（しばじゅん）-->
+        <% @customers.each do |customer| %>
+        <tr>
+             <td class="info col-xs-1">
+                <%= customer.id %>
+             </td>
+             <td class="text-left">
+                <%= link_to customer.last_name, admin_customer_path(customer) %>
+                <!--なぜかここだけ、full-nameが反映できない(しばじゅん）-->
+             </td>
+             <td class="text-left">
+                <%= customer.email %>
+             </td>
+             <td class="col-xs-2">
+                <% if customer.is_deleted == true%>
+                  <p class="text-secondary">退会済</p>
+                <% else %>
+                  <p class="text-success">有効</p>
+                <% end %>
+             </td>
+         </tr>
+        <% end %>
       </tbody>
+    </table>
   </div>
 

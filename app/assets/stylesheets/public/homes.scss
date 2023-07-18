@@ -1,3 +1,25 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.top {
+  width: 100%;
+  height: 100%;
+  background-color: #fffaf0;
+}
+
+.top-image {
+  width: 100%;
+  height: 300px;
+  background-image: url(4962229552eedca4b3e7839611f7763a.jpg);
+  background-size:cover;
+}
+
+.welcome-text {
+  background-color: rgba(0, 0, 0, 0.4);
+  font-family: "MS Pゴシック" ;
+}
+
+.welcome-text p {
+  color: white;
+  font-size: 20px;
+}

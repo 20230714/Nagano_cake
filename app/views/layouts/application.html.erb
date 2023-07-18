@@ -6,7 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/f9e80abfb4.js" crossorigin="anonymous"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -14,7 +15,7 @@
     <header>
       <nav class="navbar navbar-expand-lg border-bottom">
         <div class="container">
-          <div class="navbar-brand border rounded mt-3 px-3"><h2>LOGO</h2></div>
+          <div class="navbar-brand mt-3 px-3"><h2 class="logo"><%= link_to 'Nagano CAKE', root_path, class: "text-dark text-decoration-none" %></h2></div>
           <ul class="navbar-nav">
             <% if customer_signed_in? %>
               <li>
@@ -24,7 +25,9 @@
                 <%= link_to "商品一覧", items_path, class: "border rounded p-2 mr-3 text-dark" %>
               </li>
               <li>
-                <%= link_to "カート", cart_items_path, class: "border rounded p-2 mr-3 text-dark" %>
+                <%= link_to cart_items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-shopping-cart"></i>
+                <% end %>
               </li>
               <li>
                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "border rounded p-2 text-dark" %>
@@ -63,6 +66,13 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
+    <main style="height: 800px"><%= yield %></main>
+    <% if customer_signed_in? %>
+    <footer>
+      <p class="text-white">プライバシーポリシー｜よくあるご質問｜お問い合わせ｜店舗案内</p>
+      <div class="text-center"><h4 class="logo"><%= link_to 'Nagano CAKE', root_path, class: "text-white text-decoration-none" %></h4></div>
+      <p class="text-white text-center">©xxxx.xxxxx.xxxx</p>
+    </footer>
+    <% end %>
   </body>
 </html>

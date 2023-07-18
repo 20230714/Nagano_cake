@@ -6,12 +6,13 @@
     <table class="table">
       <tbody>
         <tr>
+          <i class="fas fa-book"></i>
           <td>氏名</td>
-          <td><%= @customer.last_name %></td>
+          <td><%= @customer.full_name %></td>
         </tr>
         <tr>
           <td>カナ</td>
-          <td><%= @customer.last_name %></td>
+          <td><%= @customer.kana_full_name %></td>
         </tr>
         <tr>
           <td>郵便番号</td>
@@ -28,8 +29,16 @@
         <tr>
           <td>メールアドレス</td>
           <td><%= @customer.email %></td>
-        </tr>        
+        </tr>
       </tbody>
     </table>
+    <div class="mr-5">
+      <p>配送先</p>
+      <p>注文履歴</p>
+    </div>
+    <div class="ml-5">
+      <p><%= link_to "一覧を見る",addresses_path, class:"btn btn-primary"%></p>
+      <p><%= link_to "一覧を見る", orders_path,class:"btn btn-primary"%></p>
+    </div>
   </div>
 </div>
