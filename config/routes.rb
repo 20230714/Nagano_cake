@@ -23,8 +23,15 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    scope module: :public do
     root to: "homes#top"
     get "about", to: "homes#about"
+    resources :customers, only: [:edit,:update,:show] do
+      collection do
+        # 退会確認画面
+        get  '/customers/check' => 'customers#check'
+        # 論理削除用のルーティング
+        patch  '/customers/withdraw' => 'customers#withdraw'
+      end
+    end
     resources :items, only: [:index, :show]
-    resources :customers
     resources :cart_items
 
     resources :orders, only: [:new, :create, :index, :show]do
