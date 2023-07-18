@@ -7,7 +7,7 @@
       <div class="mt-5"><%= image_tag @item.image, size: "300x200" %></div>
     </div>
     <div class="col-3 offset-md-1">
-      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+      <%= form_with model: @cart_item do |f| %>
       <table class="table table-borderless mt-5">
         <tr>
           <th colspan="2"><h3><%= @item.name %></h3></th>
