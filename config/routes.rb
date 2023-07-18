@@ -23,6 +23,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    scope module: :public do
     root to: "homes#top"
     get "about", to: "homes#about"
+    resources :items, only: [:index, :show]
     resources :customers, only: [:edit,:update,:show] do
       collection do
         # 退会確認画面
@@ -31,16 +32,17 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
         patch  '/customers/withdraw' => 'customers#withdraw'
       end
     end
-    resources :items, only: [:index, :show]
-    resources :cart_items
-
-    resources :orders, only: [:new, :create, :index, :show]do
-        collection do
-          post "confirm"
-          get "complete"
-        end
+    resources :cart_items,only: [:index,:update,:create,:destroy] do
+      collection do
+        delete '/all_destroy' => 'cart_items#all_destroy'
       end
-
+    end
+    resources :orders, only: [:new, :create, :index, :show]do
+      collection do
+        post "confirm"
+        get "complete"
+      end
+    end
     resources :addresses
+    end
    end
-end

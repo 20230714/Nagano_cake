@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <h3 class="text-center mb-5 mt-5 w-25", style="background-color:#d3d3d3;">ショッピングカート</h3>
-
+　　　<%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete, class:"btn btn-danger" %>
       <table class='table'>
         <thead style="background-color:#d3d3d3;">
           <tr>
@@ -14,23 +14,46 @@
           </tr>
         </thead>
         <tbody>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.add_tax_price %></td>
+          <td>
+            <%= form_with model: @cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+            <%= f.select :quantity, *[1..20], selected: cart_item.quantity %>
+            <%= f.submit "変更", class: "btn btn-success" %>
+            <% end %>
+          </td>
+          <td><%= cart_item.subtotal %></td>
+          <td><%= link_to " 削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+          <% end %>
         </tbody>
       </table>
 
+      <table class="table table-bordered w-25 h-25 float-right">
+        <thead class="thead-light">
+
+        <tr>
+          <th class="align-middle border-dark">合計金額</th>
+        <% @cart_items.each do |cart_item| %>
+        <% @total += cart_item.subtotal %>
+        <% end %>
+          <td class="align-middle border-dark"><%= @total %></td>
+
+        </tr>
+
+        </thead>
+      </table>
+
+
         <%= link_to "買い物を続ける", items_path(@item), class: "btn btn-lg btn-primary" %>
 
-          <table class="table table-bordered w-25 h-25 float-right">
-            <thead class="thead-light">
-            <tr><th class="align-middle border-dark">合計金額</th><td class="align-middle border-dark">12345</td></tr>
-          </table>
-
+        <% if @cart_items.any? %>
         <div class="row justify-content-center mt-5">
           <%= link_to "注文情報入力に進む", new_order_path, class: "btn btn-lg btn-success" %>
         </div>
+        <% end %>
     </div>
   </div>
 </div>
