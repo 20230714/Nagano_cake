@@ -1,8 +1,9 @@
 <div class="container">
-  <h2 class="text-center mb-5 mt-5 w-25", style="background-color:#d3d3d3;">会員一覧</h2>
   <div class="row justify-content-center">
-    <table class="table">
-      <thead>
+    <h3 class="text-center mt-5", style="margin:auto; width:200px;">会員一覧</h3>
+    <div class="col-10 mx-auto">
+      <table class="table mt-5">
+      <thead  class="table-secondary">
         <tr>
           <th>会員ID</th>
           <th>氏名</th>
@@ -25,7 +26,7 @@
              </td>
              <td class="col-xs-2">
                 <% if customer.is_deleted == true%>
-                  <p class="text-secondary">退会済</p>
+                  <p class="text-danger">退会済</p>
                 <% else %>
                   <p class="text-success">有効</p>
                 <% end %>
@@ -34,5 +35,7 @@
         <% end %>
       </tbody>
     </table>
+    </div>
   </div>
+</div>
 

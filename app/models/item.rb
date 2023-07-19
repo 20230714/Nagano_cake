@@ -12,4 +12,8 @@ validates :price, presence: true
 def add_tax_price
   (self.price * 1.10).round
 end
+
+def self.looks(word)
+  Item.where("name LIKE?","%#{word}%")
+end
 end
