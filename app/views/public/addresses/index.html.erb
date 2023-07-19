@@ -1,10 +1,12 @@
 <div class="container">
-    <h2 class="text-center mr-10 mb-5 mt-5 w-25 offset-2 ", style="background-color:#d3d3d3;">配送先登録/一覧</h2>
+  <div class="row">
+    <div class="col-10">
+      <h3 class="text-center my-5 ml-5 w-25">配送先登録/一覧</h3>
     <div>
       <%= form_with model: @address, local:true do |f| %>
         <div class="field_row">
           <%= f.label :"郵便番号(ハイフンなし）", class:"col-4" %>
-          <%= f.text_field :postcode, class:"col-5" %>
+          <%= f.text_field :postcode, class:"col-4" %>
         </div>
         <div class="field-row">
           <%= f.label :"住所", class:"col-4" %>
@@ -18,7 +20,7 @@
       <% end %>
 
       <div class="create">
-          <table class="table table-hover table-bordered">
+          <table class="table table-hover table-bordered ml-3">
             <thead>
               <tr>
                 <th>郵便番号</th>
@@ -52,4 +54,7 @@
 
       </div>
    </div>
+    </div>
+  </div>
+
 </div>
