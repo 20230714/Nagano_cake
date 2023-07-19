@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
+  has_many :addresses
 
   # 会員フルネーム(しばじゅん）
   def full_name
