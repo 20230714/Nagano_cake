@@ -18,6 +18,7 @@
           <div class="navbar-brand mt-3 px-3"><h2 class="logo"><%= link_to 'Nagano CAKE', root_path, class: "text-dark text-decoration-none" %></h2></div>
           <ul class="navbar-nav">
             <% if customer_signed_in? %>
+              
               <li>
                 <%= link_to customer_path(current_customer), class: "border rounded p-2 mr-3 text-dark" do %>
                 <i class="fas fa-user"></i> my page
@@ -79,7 +80,7 @@
           </ul>
         </div>
         <% if customer_signed_in? %>
-         <p class="d-flex justify-content-end customer_name rounded p-2 text-white"><%= current_customer.full_name %>様</p>
+         <div class="d-flex justify-content-end customer_name rounded p-2 text-white"><%= current_customer.full_name %>様</div>
         <% end %>
       </nav>
     </header>

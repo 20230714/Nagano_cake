@@ -6,6 +6,8 @@ class Public::ItemsController < ApplicationController
   if params[:genre_id]
   	@genre = Genre.find(params[:genre_id])
   	@items = @genre.items.page(params[:page]).per(8)
+  elsif params[:word]
+    @items = Item.looks(params[:word]).page(params[:page]).per(8)
   else
   	@items = Item.all.page(params[:page]).per(8)
   end
