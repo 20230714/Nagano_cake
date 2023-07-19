@@ -1,4 +1,6 @@
 <div class="container">
+  <div class="row"><div class="mx-auto mt-2 w-50"><%= render "public/homes/search" %></div></div>
+
   <div class="row">
     <div class="col-2 ml-4 mt-4">
       <%= render 'public/homes/genre_search', genres: @genres %>
@@ -6,8 +8,10 @@
     <div class="col-9 mt-4">
       <% if params[:genre_id] %>
       <h3 class="ml-3 mt-5  d-inline-block"><%= @genre.name %></h3><h5 class="d-inline-block">(全<%= @items.count %>件)</h5>
+      <% elsif params[:word] %>
+      <h3 class="ml-3 mt-5  d-inline-block">商品名に'<%= params[:word] %>'を含む商品</h3><h5 class="d-inline-block">(全<%= @items.count %>件)</h5>
       <% else %>
-      <h3 class="ml-3 mt-5  d-inline-block">商品一覧</h3><h5 class="d-inline-block">(全<%= @items.count %>件)</h5>
+      <h3 class="ml-3 mt-5  d-inline-block">全ての商品</h3><h5 class="d-inline-block">(全<%= @items.count %>件)</h5>
       <% end %>
       <div class="container">
         <div class="row">
