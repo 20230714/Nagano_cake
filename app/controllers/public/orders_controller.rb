@@ -25,6 +25,7 @@ before_action :authenticate_customer!
         @order.postcode = params[:order][:postcode]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
+        @address = "1"
     else
         render 'new'
     end
@@ -36,10 +37,10 @@ before_action :authenticate_customer!
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.save
 
-    if params[:order][:ship] == "1"
+    if params[:order][:adress] == "1"
       current_customer.address.create(address_params)
     end
 
@@ -60,16 +61,22 @@ before_action :authenticate_customer!
 
 
   def index
-
+    @orders = current_customer.orders
   end
 
   def show
-
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @total = @order_details.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   private
   def order_params
-    params.require(:order).permit(:postcode, :address, :name, :payment_method)
+    params.require(:order).permit(:postcode, :address, :name, :payment_method, :billing_amount)
+  end
+
+  def address_params
+    params.require(:order).permit(:postcode, :address, :name)
   end
 
 end
