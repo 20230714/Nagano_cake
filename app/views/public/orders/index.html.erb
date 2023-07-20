@@ -23,8 +23,12 @@
             <%= order.address %><br>
             <%= order.name %>
           </td>
-          <td></td>
-          <td><%= @order.order_total.to_s(:delimited, delimiter: ',') %></td>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name %><br>
+              <% end %>
+              </td>
+          <td><%= order.billing_amount.to_s(:delimited, delimiter: ',') %></td>
           <td><%= order.status %></td>
           <td><%= link_to "注文詳細", order_path(order), class: "btn btn-success" %></td>
         </tbody>

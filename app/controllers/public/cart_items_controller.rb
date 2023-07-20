@@ -3,7 +3,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
   @cart_items = CartItem.where(customer:current_customer)
-  @total = 0
+  @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
   def update
