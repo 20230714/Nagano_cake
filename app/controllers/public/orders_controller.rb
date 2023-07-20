@@ -25,6 +25,7 @@ before_action :authenticate_customer!
         @order.postcode = params[:order][:postcode]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
+        @ship = "1"
     else
         render 'new'
     end
@@ -60,7 +61,7 @@ before_action :authenticate_customer!
 
 
   def index
-
+    @orders = current_customer.orders.all
   end
 
   def show
@@ -70,6 +71,10 @@ before_action :authenticate_customer!
   private
   def order_params
     params.require(:order).permit(:postcode, :address, :name, :payment_method)
+  end
+
+  def address_params
+    params.require(:order).permit(:postcode, :address, :name)
   end
 
 end

@@ -39,11 +39,11 @@ class Public::CartItemsController < ApplicationController
       else
       redirect_to items_path
       end
-    end
+  end
 
 private
   def cart_item_params
-    params.require(:cart_item).permit(:customer_id, :item_id, :quantity)
+    params.require(:cart_item).permit(:item_id, :quantity)
   end
 
 end
