@@ -40,3 +40,7 @@ footer {
 .customer_name {
   background-color: #d2691e;
 }
+
+.field_with_errors {
+  display: contents;
+}
