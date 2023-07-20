@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row">
-      <h3 class="col-12 text-center mb-5 mt-5 w-25", style="background-color:#d3d3d3;">注文情報確認</h3>
-  <div class= "col-8">
-  <table class='table mt-5'>
-    <thead style="background-color:#d3d3d3;">
+  <div class= "col-10 mx-auto">
+    <h3 class="my-5 ml-5 title">注文情報確認</h3>
+  <table class='table table-bordered mt-5'>
+    <thead style="background-color:#deb887;">
       <tr>
+        <th></th>
         <th>商品名</th>
         <th>単価（税込）</th>
         <th>数量</th>
@@ -15,7 +16,8 @@
     <% @cart_items.each do |cart_item| %>
     <tbody>
       <tr>
-        <td><%= image_tag cart_item.item.image, size: "50x50" %><%= cart_item.item.name %></td>
+        <td><%= image_tag cart_item.item.image, size: "50x50" %></%></td>
+        <td><%= cart_item.item.name %></td>
         <td><%= cart_item.item.add_tax_price.to_s(:delimited, delimiter: ',') %></td>
         <td><%= cart_item.quantity %></td>
         <td><%= cart_item.subtotal.to_s(:delimited, delimiter: ',') %></td>
@@ -26,31 +28,31 @@
   </div>
 
     <div class="col-3 offset-md-1">
-      <table class='table mt-5'>
-        <tr><th style="background-color:#d3d3d3;">送料</th><td><%= @order.postage %></td></tr>
+      <table class='table table-bordered mt-5'>
+        <tr><th style="background-color:#deb887;">送料</th><td><%= @order.postage %></td></tr>
 
         <% @cart_items.each do |cart_item| %>
         <% @total += cart_item.subtotal %>
         <% end %>
-        <tr><th style="background-color:#d3d3d3;">商品合計</th><td><%= @total.to_s(:delimited, delimiter: ',') %></td></tr>
+        <tr><th style="background-color:#deb887;">商品合計</th><td><%= @total.to_s(:delimited, delimiter: ',') %></td></tr>
 
-        <tr><th style="background-color:#d3d3d3;">請求金額</th>
+        <tr><th style="background-color:#deb887;">請求金額</th>
         <% @order_total = @order.postage + @total %>
         <td><%= @order_total.to_s(:delimited, delimiter: ',') %></td></tr>
       </table>
     </div>
 
-    <div class= "col-8 mt-5 table-borderless">
-      <table class="table">
+    <div class= "col-8 mt-5">
+      <table class="table table-bordered">
         <thead>
         <tr>
-          <th><strong>支払方法</strong></th>
+          <th style="background-color:#deb887;"><strong>支払方法</strong></th>
           <td>
             <%= @order.payment_method_i18n %>
           </td>
         </tr>
         <tr>
-          <th><strong>お届け先</strong></th>
+          <th style="background-color:#deb887;"><strong>お届け先</strong></th>
           <td>
             <%= "#{@order.postcode} #{@order.address} 　#{@order.name}" %>
           </td>
