@@ -6,7 +6,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.page(params[:page])
+    if params[:word]
+      @items = Item.looks(params[:word]).page(params[:page])
+    else
+      @items = Item.all.page(params[:page])
+    end
   end
 
   def show
