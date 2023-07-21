@@ -78,6 +78,17 @@
             <% end %>
           </ul>
         </div>
+        <% if admin_signed_in? %>
+        <%= form_with url: admin_items_path, method: :get do |f| %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <%= f.label :商品名, class: "input-group-text" %>
+          </div>
+          <%= f.text_field :word, class: "form-control w-25", placeholder: "キーワード" %>
+          <%= f.submit "検索", class: "btn text-white form-control ", style: "background-color: #a0522d;" %>
+        </div>
+        <% end %>
+        <% end %>
         <% if customer_signed_in? %>
          <div class="d-flex justify-content-end customer_name rounded p-2 text-white"><%= current_customer.full_name %>様</div>
         <% end %>
