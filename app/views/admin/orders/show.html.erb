@@ -49,7 +49,7 @@
             <th><%= order_detail.quantity %></th>
             <th><%= order_detail.subtotal.to_s(:delimited, delimiter: ',') %></th>
             <th>
-              <%= form_with model: order_detail, url: admin_order_detail_path do |f|%>
+              <%= form_with model: order_detail, url: admin_order_detail_path(order_detail) do |f|%>
                 <%= f.select :making_status, OrderDetail.making_statuses.keys, class:"making_status"%>
                 <%= f.submit "更新", class:"btn btn-success"%>
               <% end %>
