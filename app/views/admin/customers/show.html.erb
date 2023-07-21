@@ -41,7 +41,7 @@
           <th></th>
           <td class="d-flex">
             <p><%= link_to "編集する",edit_admin_customer_path, class:"btn btn-success" %></p>
-            <p class="offset-3"><%= link_to "注文履歴一覧を見る", admin_root_path, class:"btn btn-primary" %></p>
+            <p class="offset-3"><%= link_to "注文履歴一覧を見る", admin_root_path(customer_id: @customer.id), class:"btn btn-primary" %></p>
             <!--オーダー機能が実装されたら、admin_orders_pathでちゃんと飛ぶか確認。（しばじゅん）-->
           </td>
         </tr>
