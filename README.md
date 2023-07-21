@@ -1,24 +1,48 @@
-# README
+# 概要
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイトを開発しました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このECサイトはDMM WEB CAMP生によるチーム開発課題です。実在するお店のサイトではありませんのでご了承ください。
 
-Things you may want to cover:
+# 案件の背景
 
-* Ruby version
+元々近隣住民が顧客だったが、昨年始めたInstagramから人気となり、全国から注文が来るようになった。
 
-* System dependencies
+InstagramのDMやメールで通販の注文を受けていたが、情報管理が煩雑になってきたため、
 
-* Configuration
+管理機能を含んだ通販サイトを開設しようと思い至った。
 
-* Database creation
+# 開発環境
 
-* Database initialization
+-   ruby 3.1.2
+-   Rails 6.1.7.4
+-   Bootstrap v4.6.2
 
-* How to run the test suite
+# 実装した機能
 
-* Services (job queues, cache servers, search engines, etc.)
+-   顧客側
+    -   会員登録、ログイン・ログアウト、退会
+    -   会員情報の編集
+    -   カートへの追加、商品購入
+    -   支払い方法、配送先の指定
+    -   配送先の登録、編集
+      
+-   管理者側
+    -   商品の新規追加、編集
+    -   商品情報の編集
+    -   会員登録されているユーザ情報の編集、退会処理
+    -   注文ステータス、制作ステータスの編集
+      
+-   追加機能 　
+    -   商品名キーワード検索
+    -   ジャンル検索
+      
+# 管理者ページへのログイン方法
+```
+email: 'admin@teamb',
+password: 'testlogin'
+```
 
-* Deployment instructions
-
-* ...
+# チームメンバー
+-  過足拓也(よぎ）
+-  宗像竜也　（たつ）
+-  柴田淳也（しばじゅん）
