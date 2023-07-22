@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
        <div class="col-10 mx-auto">
-         <h3 class="my-5 ml-5"><%= @customer.full_name %>さんの会員情報編集</h3>
+         <h3 class="my-5 text-center"><%= @customer.full_name %>さんの会員情報編集</h3>
          <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
         <div class="field-row">
           <%= f.label :"会員ID", class:"col-4" %>

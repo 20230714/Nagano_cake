@@ -54,7 +54,7 @@
         <tr>
           <th style="background-color:#deb887;"><strong>お届け先</strong></th>
           <td>
-            <%= "#{@order.postcode} #{@order.address} 　#{@order.name}" %>
+            <%= "#{'〒'}#{@order.postcode} #{@order.address} #{@order.name}" %>
           </td>
         </tr>
         </thead>
