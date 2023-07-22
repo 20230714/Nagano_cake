@@ -1,16 +1,104 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake2</title>
+    <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://kit.fontawesome.com/f9e80abfb4.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg border-bottom">
+        <div class="container">
+          <div class="navbar-brand mt-3 px-3"><h2 class="logo"><%= link_to 'Nagano CAKE', root_path, class: "text-dark text-decoration-none" %></h2></div>
+          <ul class="navbar-nav">
+            <% if customer_signed_in? %>
+              <li>
+                <%= link_to customer_path(current_customer), class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-user"></i> my page
+                <% end %>
+              </li>
+              <li>
+                <%= link_to items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-birthday-cake"></i> items
+                <% end %>
+              </li>
+              <li>
+                <%= link_to cart_items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-shopping-cart"></i> cart
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_customer_session_path, method: :delete, class: "border rounded p-2 text-dark" do %>
+                <i class="fas fa-sign-out-alt"></i> Log out
+                <% end %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li>
+                <%= link_to "商品一覧", admin_items_path, class: "border rounded p-2 mr-3 text-dark" %>
+              </li>
+              <li>
+                <%= link_to "会員一覧", admin_customers_path, class: "border rounded p-2 mr-3 text-dark" %>
+              </li>
+              <li>
+                <%= link_to "注文履歴一覧", admin_root_path, class: "border rounded p-2 mr-3 text-dark" %>
+              </li>
+              <li>
+                <%= link_to "ジャンル一覧", admin_genres_path, class: "border rounded p-2 mr-3 text-dark" %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "border rounded p-2 text-dark" %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to about_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-store"></i> About
+                <% end %>
+              </li>
+              <li>
+                <%= link_to items_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-birthday-cake"></i> items
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_customer_registration_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-user-plus"></i> sign up
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_customer_session_path, class: "border rounded p-2 mr-3 text-dark" do %>
+                <i class="fas fa-sign-in-alt"></i> Log in
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <% if admin_signed_in? %>
+        <%= form_with url: admin_items_path, method: :get do |f| %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <%= f.label :商品名, class: "input-group-text" %>
+          </div>
+          <%= f.text_field :word, class: "form-control w-25", placeholder: "キーワード" %>
+          <%= f.submit "検索", class: "btn text-white form-control ", style: "background-color: #a0522d;" %>
+        </div>
+        <% end %>
+        <% end %>
+        <% if customer_signed_in? %>
+         <div class="d-flex justify-content-end customer_name rounded p-2 text-white"><%= current_customer.full_name %>様</div>
+        <% end %>
+      </nav>
+    </header>
+    <main><%= yield %></main>
+  <footer>
+    <p class="text-white">プライバシーポリシー｜よくあるご質問｜お問い合わせ｜店舗案内</p>
+    <div class="text-center"><h4 class="logo"><%= link_to 'Nagano CAKE', root_path, class: "text-white text-decoration-none" %></h4></div>
+    <p class="text-white text-center">©xxxx.xxxxx.xxxx</p>
+  </footer>
   </body>
 </html>

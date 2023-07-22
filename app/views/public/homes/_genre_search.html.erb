@@ -1,0 +1,8 @@
+<table class="table table-light mt-5 border">
+  <tr>
+    <th class="text-center text-white genre-head">ジャンルから探す</th>
+  </tr>
+  <% genres.each do |genre| %>
+  <tr class="mx-auto  text-center"><td><%= link_to genre.name, items_path(genre_id: genre.id), class: "text-decoration-none text-dark rounded bg-light p-2" %></td></tr>
+  <% end %>
+</table>

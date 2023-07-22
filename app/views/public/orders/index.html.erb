@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h3 class="ml-5 my-5">注文履歴一覧</h3>
+
+  <% if @orders.present? %>
+      <table class='table'>
+        <thead style="background-color:#deb887;">
+          <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th>注文詳細</th>
+          </tr>
+        </thead>
+        <% @orders.each do |order| %>
+        <tbody>
+          <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+          <td>
+            〒<%= order.postcode %><br>
+            <%= order.address %><br>
+            <%= order.name %>
+          </td>
+          <td>
+            <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name %><br>
+              <% end %>
+              </td>
+          <td><%= order.billing_amount.to_s(:delimited, delimiter: ',') %></td>
+          <td><%= order.status %></td>
+          <td><%= link_to "注文詳細", order_path(order), class: "btn btn-success" %></td>
+        </tbody>
+        <% end %>
+      </table>
+  <% else %>
+    <h4>注文履歴がありません。<h4>
+  <% end %>
+    </div>
+  </div>
+</div>

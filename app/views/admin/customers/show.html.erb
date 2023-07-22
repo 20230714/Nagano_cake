@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h3 class="my-5 text-center"><%= @customer.full_name %>さんの会員詳細</h3>
+      <table class="table">
+        <tr>
+          <th class="text-left">会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th class="text-left">氏名</th>
+          <td><%= @customer.full_name %></td>
+        </tr>
+        <tr>
+          <th class="text-left">フリガナ</th>
+          <td><%= @customer.kana_full_name %></td>
+        </tr>
+        <tr>
+          <th class="text-left">郵便番号</th>
+          <td><%= @customer.postcode %></td>
+        </tr>
+        <tr>
+          <th class="text-left">住所</th>
+          <td><%= @customer.address %></td>
+        </tr>
+          <th class="text-left">電話番号</th>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        </tr>
+          <th class="text-left">メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+          <th class="text-left">会員ステータス</th>
+          <% if @customer.is_deleted == true %>
+            <td class="text-danger">退会済み</td>
+          <% else %>
+            <td class="text-success">有効</td>
+          <% end %>
+        </tr>
+        <tr>
+          <th></th>
+          <td class="d-flex">
+            <p><%= link_to "編集する",edit_admin_customer_path, class:"btn btn-success" %></p>
+            <p class="offset-3"><%= link_to "注文履歴一覧を見る", admin_root_path(customer_id: @customer.id), class:"btn btn-primary" %></p>
+            <!--オーダー機能が実装されたら、admin_orders_pathでちゃんと飛ぶか確認。（しばじゅん）-->
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
